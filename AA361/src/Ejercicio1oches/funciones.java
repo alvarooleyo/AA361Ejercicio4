@@ -15,7 +15,9 @@ import java.util.StringTokenizer;
 public class funciones {
 
  public void creaTablaCoches(Connection con, String nombreBD) throws SQLException {
-        String createString = "create table "+nombreBD+".COCHES "+
+        String createString1 = "drop table "+nombreBD+".COCHES";
+        
+        String createString2 = "create table "+nombreBD+".COCHES "+
                               "(MATRICULA varchar(8) NOT NULL,"+
                               "MARCA varchar(40) NOT NULL,"+
                               "MODELO varchar(40) NOT NULL,"+
@@ -27,7 +29,8 @@ public class funciones {
 
         try {
             stmt = con.createStatement();
-        stmt.executeUpdate(createString);
+         stmt.executeUpdate(createString1);
+         stmt.executeUpdate(createString2);
         } catch (SQLException e) {
            e.printStackTrace();
         } finally {
